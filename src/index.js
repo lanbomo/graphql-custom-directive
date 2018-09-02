@@ -91,7 +91,7 @@ function resolveMiddlewareWrapper(resolve = defaultResolveFn, directives = {}) {
     }
 
     let defer = resolveWithDirective(
-      () => Promise.resolve(resolve(source, args, context, info)),
+      (argsFromDirective) => Promise.resolve(resolve(source, args, context, info, argsFromDirective)),
       source,
       directive,
       context,

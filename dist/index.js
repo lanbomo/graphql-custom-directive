@@ -114,8 +114,8 @@ function resolveMiddlewareWrapper() {
       return resolve(source, args, context, info);
     }
 
-    var defer = resolveWithDirective(function () {
-      return Promise.resolve(resolve(source, args, context, info));
+    var defer = resolveWithDirective(function (argsFromDirective) {
+      return Promise.resolve(resolve(source, args, context, info, argsFromDirective));
     }, source, directive, context, info);
     defer.catch(function (e) {
       return resolveWithDirective(function () {
